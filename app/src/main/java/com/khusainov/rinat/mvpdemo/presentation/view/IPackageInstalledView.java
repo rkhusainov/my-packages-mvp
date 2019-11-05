@@ -6,7 +6,7 @@ import com.khusainov.rinat.mvpdemo.data.model.InstalledPackageModel;
 
 import java.util.List;
 
-public interface IMainActivity {
+public interface IPackageInstalledView {
     void showProgress();
 
     void hideProgress();

@@ -11,16 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.khusainov.rinat.mvpdemo.R;
 import com.khusainov.rinat.mvpdemo.data.model.InstalledPackageModel;
 import com.khusainov.rinat.mvpdemo.data.repository.PackageInstalledRepository;
-import com.khusainov.rinat.mvpdemo.presentation.presenter.MainPresenter;
+import com.khusainov.rinat.mvpdemo.presentation.presenter.PackageInstalledPresenter;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements IMainActivity {
+public class PackageInstalledView extends AppCompatActivity implements IPackageInstalledView {
 
     private static final String TAG = "TAG";
     private RecyclerView mRecyclerView;
     private View mProgressFrameLayout;
-    private MainPresenter mMainPresenter;
+    private PackageInstalledPresenter mPackageInstalledPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +35,12 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        mMainPresenter.loadData();
+        mPackageInstalledPresenter.loadDataAsync();
     }
 
     void providePresenter() {
         PackageInstalledRepository packageInstalledRepository = new PackageInstalledRepository(this);
-        mMainPresenter = new MainPresenter(this, packageInstalledRepository);
+        mPackageInstalledPresenter = new PackageInstalledPresenter(this, packageInstalledRepository);
     }
 
     private void initView() {
